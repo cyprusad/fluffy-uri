@@ -29,6 +29,9 @@ class __uri__:
     def addFile(self, filePathStr):
         return addPath(uri, filePathStr)
 
+# URI pattern
+pattrn = re.compile(r'^((?:https?\:\/\/)|(?:ftp\:\/\/))(\w[-\w.]+(\.[\w]+)+)')
+
 
 
 def create(uri):
