@@ -12,13 +12,29 @@ class __uri__:
     def show(self):
         print self.uri
 
+    def addPath(self,  pathStr):
+        if uri[len(uri) - 1] == "/":
+            if pathStr[0] == "/":
+                uri += pathStr[1:]
+            else:
+                uri += pathStr
+        else:
+            if pathStr[0] == "/":
+                uri += pathStr
+            else:
+                uri += "/" + pathStr
+        self.length = len(self.uri)
+        return self
+
+    def addFile(self, filePathStr):
+        return addPath(uri, filePathStr)
+
 
 
 def create(uri):
     return __uri__(uri)
 
-
-def addPath(uri,  pathStr):
+def addPath(pathStr):
     if uri[len(uri) - 1] == "/":
         if pathStr[0] == "/":
             uri += pathStr[1:]
@@ -31,7 +47,7 @@ def addPath(uri,  pathStr):
             uri += "/" + pathStr
     return uri
 
-def addFile(uri, filePathStr):
+def addFile(filePathStr):
     return addPath(uri, filePathStr)
 
 
