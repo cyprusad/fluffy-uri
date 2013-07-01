@@ -1,40 +1,46 @@
 import re
-class Uri:
+
+class __uri__:
     def __init__(self):
         self.uri = ""
-        self.length = len(self.uri)
-    def __init__(self, uriStr):
-        self.uri = uriStr
-        self.length = len(self.uri)
+        self.length = 0
+
+    def __init__(self, uri):
+        self.uri = uri
+        self.length = len(uri)
 
     def show(self):
         print self.uri
 
-    def addPath(self, pathStr):
-        if self.uri[self.length - 1] == "/":
-            if pathStr[0] == "/":
-                self.uri += pathStr[1:]
-            else:
-                self.uri += pathStr
-        else:
-            if pathStr[0] == "/":
-                self.uri += pathStr
-            else:
-                self.uri += "/" + pathStr
-        self.length = len(self.uri)
-        return self
 
-    def addFile(self, filePathStr):
-       return self.addPath(filePathStr)
+
+def create(uri):
+    return __uri__(uri)
+
+
+def addPath(uri,  pathStr):
+    if uri[len(uri) - 1] == "/":
+        if pathStr[0] == "/":
+            uri += pathStr[1:]
+        else:
+            uri += pathStr
+    else:
+        if pathStr[0] == "/":
+            uri += pathStr
+        else:
+            uri += "/" + pathStr
+    return uri
+
+def addFile(uri, filePathStr):
+    return addPath(uri, filePathStr)
+
 
 if __name__ == "__main__":
     s1 = "http://saiwarang.com"
-    u1 = Uri(s1)
-    u1.show()
     a1 = "/resume.pdf"
     a2 = "posts"
-    u1.addPath(a2).addFile(a1)
+    print addPath(s1, a2)
+    u1 = create(s1)
     u1.show()
-
 
 
