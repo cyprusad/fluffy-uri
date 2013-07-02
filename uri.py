@@ -30,7 +30,7 @@ class __uri__:
         return addPath(uri, filePathStr)
 
 # URI pattern
-pattrn = re.compile(r'^((?:https?\:\/\/)|(?:ftp\:\/\/))(\w[-\w.]+(\.[\w]+)+)')
+pattrn = re.compile(r'^(?P<protocol>(?:https?\:\/\/)|(?:ftp\:\/\/))(\w[-\w.]+(\.[\w]+)+)')
 
 
 
@@ -61,5 +61,4 @@ if __name__ == "__main__":
     print addPath(s1, a2)
     u1 = create(s1)
     u1.show()
-
 
